@@ -1,0 +1,204 @@
+:root{
+    --biru-pastel: #46C6FF;
+    --hijau-pastel: #02B9AD;
+    --hitam-666: #666666;
+    --hitam-333: #333333;
+    --putih: #ffffff;
+    --back-abu: #f5f5f5;
+    --abu-hitam-hover: #ececec;
+}
+/* warna */
+.hijau-pastel{
+    background-color: var(--hijau-pastel);
+    color: var(--putih);
+}
+.color-hijau-pastel{ 
+    color: var(--hijau-pastel);
+}
+.color-biru-pastel{
+    color: var(--biru-pastel);
+}
+.white{
+   color: var(--putih); 
+}
+.back-biru-pastel{
+    background-color: var(--biru-pastel);
+    color: var(--putih);
+    font-weight: 600;
+}
+.backg-biru-pastel{
+    background-color: var(--biru-pastel);
+    color: var(--putih);
+}
+.hitam-666{
+    color: var(--hitam-666);
+}
+/* end warna */
+ 
+.btn:hover{
+    color: var(--putih);
+}
+.w-100{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.width-card-120px{
+    width: 120px;
+}
+body{
+    background-color: var(--putih);
+    color: var(--hitam-666); 
+    min-height: 100vh;
+    height: 100%;
+}
+
+nav {
+    background-color: var(--putih);
+}
+#navbar.show {
+   top: -70px;
+}
+#navbar{       
+    position: sticky; 
+    top: 0;
+    transition: top .3s ease;
+    z-index: 999;
+}
+section{
+    padding: 1.4rem 0;
+}
+
+.hero-banner{
+    background-image: url("../img/cek kesehatan rutin.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    padding: 0;
+}
+
+.hero-banner .back-biru-pastel{ 
+    background: linear-gradient(to right, rgb(70, 200, 255), rgba(255, 255, 255, 0.096));
+    padding: 7rem 0;
+}
+ 
+.aut{
+    flex: 1 0 auto;
+}
+.footer{
+   padding-bottom: 0;  
+   flex-shrink: none;
+}
+.footer .top{
+    background-color: #152f3b;
+    padding: 1.4rem 0;
+}
+.footer .bottom{
+    background-color: #0f222b;
+    padding: 0.2rem 0;
+    color: var(--putih);
+    font-size: 0.9rem;
+}
+
+.hover-back{
+    border-radius: 4px;
+    padding: 0 0.8rem;
+}
+.hover-back:hover{
+    transition: all ease-in 0.2s;
+    background-color: var(--biru-pastel)
+}
+.hover-back:hover a{
+    color: var(--putih);
+}
+
+.hover-santai:hover{
+    color: var(--abu-hitam-hover);
+}
+
+/* fonts */
+.fs-08{
+    font-size: 0.8rem;
+}
+.fw-500{
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}  
+.fw-650{
+    font-weight: 650;
+}
+
+a{
+    color: var(--putih);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--hitam-666);
+}
+.scroll-samping{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+.img-2r{
+    width: 3rem;
+    cursor: pointer;
+} 
+.img-2r:hover{
+    transition: all ease-in 0.2s;
+    transform: scale(1.1);
+} 
+.card-item-ap{
+    width: 30rem;
+    border: 1px solid var(--hitam-666);
+}
+
+.p-btn{
+    padding: 4px 8px;
+}
+@media screen and (max-width: 1100px){
+    .hero-banner .back-biru-pastel{
+        padding: 3rem 0;
+    } 
+    .fw-500{ 
+        font-size: 1rem;
+    }
+    .fw-400{
+        font-weight: 400;
+    }
+    .fs-08{
+        font-size: 0.8rem;
+    }
+    .width-card-120px{
+        width: 90px;
+    }
+    
+}
+@media screen and (max-width: 768px){ 
+ 
+}
+@media screen and (max-width: 576px){ 
+}
+
+
+/* login */
+.form-login{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--putih)
+}
+.tengah-absolute{  
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.ale{
+    top: 10%;
+    z-index: 999;
+}
+ 
