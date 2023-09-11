@@ -47,7 +47,11 @@ Route::group(['middleware' => ['auth:web,medis']], function () {
     
     Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
         Route::get('/getuser', [ManageUserController::class, 'getuser'])->name('getUser');
+
         Route::get('/getmedis', [ManageMedisController::class, 'getmedis'])->name('getMedis');
+        Route::get('/addmedis', [ManageMedisController::class, 'addmedis'])->name('addMedis');
+        Route::post('/addmedisproccess', [ManageMedisController::class, 'addmedisproccess'])->name('addMedisProccess');
+
         Route::get('/getklinik', [ManageKlinikController::class, 'getklinik'])->name('getKlinik');
 
     });

@@ -6,7 +6,8 @@
     <div class="container">
       <div class="d-flex gap-4">
         <a href="{{ route('getUser') }}"><h5 class="fw-500 mb-3  {{ request()->is('getuser') ? 'text-info' : 'text-secondary'}}">DAFTAR USER</h5></a>
-        <a href="{{ route('getMedis') }}"><h5 class="fw-500 mb-3  {{ request()->is('getmedis') ? 'text-info' : 'text-secondary'}}">DAFTAR MEDIS</h5></a> 
+        <a href="{{ route('getMedis') }}"><h5 class="fw-500 mb-3  {{ request()->is('getmedis') ? 'text-info' : 'text-secondary'}}">DAFTAR MEDIS</h5></a>
+        <a href="{{ route('addMedis') }}"><div class=" bg-primary px-2 rounded-1">Tambah Medis</div></a> 
       </div>
       <!-- <span>silahkan isi form ini sesuai data yang anda miliki</span> -->
       <table class="table">
