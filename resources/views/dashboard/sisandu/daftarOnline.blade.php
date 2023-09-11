@@ -13,21 +13,26 @@
           </h6>
         </div>
         <div class="card-body">
-          <form class="row g-3">  
+          <form class="row g-3" action="{{ route('daftarOnlineProccess') }}" method="POST">  
+            @csrf
             <div class="col-md-12">
               <label for="inputnama" class="form-label">Kode Akses Anak</label>
               <span class="text-danger">* didapatkan setelah mendaftarkan Anak</span>
               <a class="bg-primary px-2 float-end rounded-1" href="{{ route('daftarAnak') }}">daftarkan Anak</a>
-              <input type="text" class="form-control" id="inputnama">
+              <input type="text" class="form-control" id="inputnama" name="kode_akses">
             </div>  
-            <div class="col-md-12">
+            <div class="col-md-6">
               <label for="inputState" class="form-label">Pilih Posyandu</label>
               <select name="klinik_id" id="" class="form-select">
                 @foreach($klinik as $list)
-               <option value={{ $list->id }}>{{ $list->nama_klinik }}</option>
+                <option value={{ $list->id }}>{{ $list->nama_klinik }}</option>
                 @endforeach
-               </select>
+              </select>
             </div>
+            <div class="col-md-6">
+              <label for="inputnama" class="form-label">Tanggal</label>
+              <input type="text" class="form-control" name="tanggal" id="inputnama" placeholder="{{ $datenow }}" value="{{ $datenow }}" readonly>
+            </div>  
 
             <div class="col-12">
               <button type="submit" class="btn btn-primary">Sign in</button>

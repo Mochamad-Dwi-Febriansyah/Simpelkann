@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Models\Child_User;
 
 class AuthController extends Controller
 {
@@ -85,6 +86,7 @@ class AuthController extends Controller
     }
 
     public function getprofil(){
-        return view('auth.profil');
+        $dataAnak = Child_User::where('id', auth()->user()->id)->get();
+        return view('auth.profil',['dataAnak'=>$dataAnak]);
     }
 }

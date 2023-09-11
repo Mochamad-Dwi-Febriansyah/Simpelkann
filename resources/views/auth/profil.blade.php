@@ -39,6 +39,31 @@
                 </tbody>
               </table>
         </div>
+
+        <div class="card-body"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Kode Akses Anak</th>
+                  <th>Nama</th>
+                  <th>Tanggal Lahir</th>
+                </tr>
+              </thead>
+                <tbody>
+                  <?php $i=1; ?>
+                  @foreach($dataAnak as $list)
+                  <tr>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $list->kode_akses }}</td>
+                    <td>{{ $list->nama }}</td>
+                    <td>{{ $list->tanggal_lahir }}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+        </div>
+
       </div>
     </div>
 </section>

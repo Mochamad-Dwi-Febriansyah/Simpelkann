@@ -36,8 +36,10 @@ Route::group(['middleware' => ['auth:web,medis']], function () {
 
     
     Route::get('/daftarSisandu', [SisanduController::class, 'daftarSisandu'])->name('daftarSisandu');
+    Route::post('/daftarSisandu/daftarOnlineProccess', [SisanduController::class, 'daftarOnlineProccess'])->name('daftarOnlineProccess');
     Route::get('/daftarSisandu/daftarAnak', [SisanduController::class, 'daftarAnak'])->name('daftarAnak');
     Route::post('/daftarSisandu/daftarAnak', [SisanduController::class, 'daftarAnakProcess'])->name('daftarAnakProcess');
+
 
     Route::get('/jadwalImunisasi', [SisanduController::class, 'jadwalImunisasi'])->name('jadwalImunisasi');
     
