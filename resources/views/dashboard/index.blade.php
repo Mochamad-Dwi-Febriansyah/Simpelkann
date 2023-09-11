@@ -55,7 +55,7 @@
                       </li> 
                       <li class="nav-item  hover-back">
                         <a class="nav-link hitam-666" href="cekantrian.html">Cek Antrian</a>
-                      </li> 
+                      </li>  
                     </ul> 
                   </div> 
                 </div>

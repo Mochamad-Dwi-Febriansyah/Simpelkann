@@ -35,7 +35,7 @@
                     class="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
-                    name="username"
+                    name="username" required
                   /> 
                   @error('username')
                   <span class="text-danger">{{ $message }}</span>
@@ -49,7 +49,7 @@
                     type="password"
                     class="form-control"
                     id="exampleInputPassword1"
-                    name="password"
+                    name="password" required
                   />
                   @error('password')
                   <span class="text-danger">{{ $message }}</span>
@@ -63,7 +63,7 @@
                     type="date"
                     class="form-control"
                     id="exampleInputPassword1"
-                    name="tanggal_lahir"
+                    name="tanggal_lahir" required
                   />
                   @error('tanggal_lahir')
                   <span class="text-danger">{{ $message }}</span>
@@ -77,8 +77,21 @@
                     type="text"
                     class="form-control"
                     id="exampleInputPassword1"
-                    name="alamat"
+                    name="alamat" required
                   />
+                  @error('alamat')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div> 
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Region</label
+                  >
+                  <select name="region_id" id="" class="form-select" required>
+                   @foreach($region as $list)
+                  <option value={{ $list->id }}>{{ $list->kecamatan }} {{ $list->kabupaten }}</option>
+                   @endforeach
+                  </select>
                   @error('alamat')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror

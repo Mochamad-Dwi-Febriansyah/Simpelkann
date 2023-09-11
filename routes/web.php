@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SisanduController;
 use App\Http\Controllers\SilayaController;
+use App\Http\Controllers\ManageUserController;
+use App\Http\Controllers\ManageMedisController;
+use App\Http\Controllers\ManageKlinikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +31,22 @@ Route::post('/registerProcess', [AuthController::class, 'registerProcess'])->nam
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth:web,medis']], function () {
-    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth:medis');
+    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/getprofil', [AuthController::class, 'getprofil'])->name('getprofil');
 
+    
     Route::get('/daftarSisandu', [SisanduController::class, 'daftarSisandu'])->name('daftarSisandu');
+    Route::get('/daftarSisandu/daftarAnak', [SisanduController::class, 'daftarAnak'])->name('daftarAnak');
+    Route::post('/daftarSisandu/daftarAnak', [SisanduController::class, 'daftarAnakProcess'])->name('daftarAnakProcess');
+
     Route::get('/jadwalImunisasi', [SisanduController::class, 'jadwalImunisasi'])->name('jadwalImunisasi');
     
     Route::get('/daftarSilaya', [SilayaController::class, 'daftarSilaya'])->name('daftarSilaya');
+    
+    Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
+        Route::get('/getuser', [ManageUserController::class, 'getuser'])->name('getUser');
+        Route::get('/getmedis', [ManageMedisController::class, 'getmedis'])->name('getMedis');
+        Route::get('/getklinik', [ManageKlinikController::class, 'getklinik'])->name('getKlinik');
+
+    });
 });

@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
       <div class="container">
         <a class="navbar-brand" href="#"
-        ><img src="assets/img/Logo SIMPELKAN(2).png" style="width: 48px"
+        ><img src="{{ asset('assets/img/Logo SIMPELKAN(2).png') }}" style="width: 48px"
       /></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -50,12 +50,20 @@
             <li class="nav-item">
               <a class="nav-link" href="datapendaftaran.html">Cek Data Pendaftaran</a>
             </li> 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="datapendaftaran.html">Daftar Klinik</a> <!--(kabupaten demak)-->
-            </li>
+            </li> --}}
+            @if (auth()->user()->username == 'admin')
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('getUser') }}">Kelola User</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('getKlinik') }}">Kelola Klinik</a>
+            </li> 
+            @endif
           </ul>
           <div class="d-flex gap-3">
-            <span class="my-auto">{{ auth()->user()->username }}</span>
+            <span class="my-auto"><a href="{{ route('getprofil') }}" class="text-secondary py-0">{{ auth()->user()->username }}</a></span>
             <span class="my-auto">|</span>
             <a href="{{ route('logout') }}"> 
                 <button type="button" class="btn btn-sm hijau-pastel fw-bold">

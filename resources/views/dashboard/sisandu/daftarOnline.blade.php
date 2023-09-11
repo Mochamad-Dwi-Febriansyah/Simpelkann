@@ -13,49 +13,20 @@
           </h6>
         </div>
         <div class="card-body">
-          <form class="row g-3">
+          <form class="row g-3">  
             <div class="col-md-12">
-              <div class="col-md-12">
-                <h6 class="text-danger">
-                  * Nomor Rekap Medis diisi dengan nomor ibu pasien yang
-                  tertera pada kartu kontrol
-                </h6>
-              </div>
-              <label for="inputEmail4" class="form-label">Nomor Rekap Medis</label>
-              <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Nama Anak</label>
-              <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-6">
-              <label for="inputAddress" class="form-label">Nama Ibu</label>
-              <input type="text" class="form-control" id="inputAddress">
-            </div>
-            <div class="col-md-6">
-              <label for="inputDate4" class="form-label">Jenis Kelamin</label>
-              <div class="form-control border-0">
-                <div class="form-check-inline">
-                  <input class="form-check-input" name="jk" type="radio" id="inlineCheckbox1" value="laki">
-                  <label class="form-check-label" for="inlineCheckbox1">Laki-Laki</label>
-                </div>
-                <div class="form-check-inline">
-                  <input class="form-check-input" name="jk" type="radio" id="inlineCheckbox2" value="pr">
-                  <label class="form-check-label" for="inlineCheckbox2">Perempuan</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="inputDate4" class="form-label">Tanggal Lahir</label>
-              <input type="date" class="form-control" id="inputDate4">
-            </div>
-            <div class="col-md-6">
+              <label for="inputnama" class="form-label">Kode Akses Anak</label>
+              <span class="text-danger">* didapatkan setelah mendaftarkan Anak</span>
+              <a class="bg-primary px-2 float-end rounded-1" href="{{ route('daftarAnak') }}">daftarkan Anak</a>
+              <input type="text" class="form-control" id="inputnama">
+            </div>  
+            <div class="col-md-12">
               <label for="inputState" class="form-label">Pilih Posyandu</label>
-              <select id="inputState" class="form-select">
-                <option selected="">Klinik Sehat Selalu</option>
-                <option selected="">Klinik Berobat</option>
-                <option selected="">Klinik Seger Waras</option>
-              </select>
+              <select name="klinik_id" id="" class="form-select">
+                @foreach($klinik as $list)
+               <option value={{ $list->id }}>{{ $list->nama_klinik }}</option>
+                @endforeach
+               </select>
             </div>
 
             <div class="col-12">

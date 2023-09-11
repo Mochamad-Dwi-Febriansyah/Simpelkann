@@ -65,6 +65,6 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 {{-- end daftar online --}}
 @endsection

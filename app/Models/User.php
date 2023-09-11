@@ -18,12 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     public $timestamps = false;
-    protected $fillable = [
-        'username',
-        'password',
-        'tanggal_lahir',
-        'alamat'
-    ];
+    // protected $fillable = [
+    //     'username',
+    //     'password',
+    //     'tanggal_lahir',
+    //     'alamat',
+    //     'regional_id',
+    //     'kode_akses'
+    // ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function regional()
+    {
+        return $this->belongsTo(Regional::class);
+    }
 }
