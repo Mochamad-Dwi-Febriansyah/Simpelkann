@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreign('child_users_id')->references('id')->on('child_users')->onDelete('cascade');
             $table->bigInteger('klinik_id')->unsigned()->index()->nullable();
             $table->foreign('klinik_id')->references('id')->on('kliniks')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('tanggal'); 
+            $table->string('antrian_ke'); 
             // $table->timestamps();
         });
     }

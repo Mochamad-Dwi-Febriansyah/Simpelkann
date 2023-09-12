@@ -3,7 +3,19 @@
 @section('content')
 {{-- daftar online --}}
 <section class="daftar-online">
-    <div class="container">
+  <div class="container">
+      @if(session('register_success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span><strong>Selamat, </strong>{{ session('register_success') }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+      @if(session('daftar_failed'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span><strong>Maaf, </strong>{{ session('daftar_failed') }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
       <h5 class="fw-500 mb-3">DAFTAR ONLINE SI SANDU</h5>
       <!-- <span>silahkan isi form ini sesuai data yang anda miliki</span> -->
       <div class="card">

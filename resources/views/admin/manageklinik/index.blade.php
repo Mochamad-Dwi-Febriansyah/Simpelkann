@@ -5,7 +5,8 @@
 <section class="daftar-online">
     <div class="container">
       <div class="d-flex gap-4">
-        <a href="{{ route('getUser') }}"><h5 class="fw-500 mb-3  {{ request()->is('getklinik') ? 'text-info' : 'text-secondary'}}">DAFTAR KLINIK</h5></a> 
+        <a href="{{ route('getKlinik') }}"><h5 class="fw-500 mb-3  {{ request()->is('getklinik') ? 'text-info' : 'text-secondary'}}">DAFTAR KLINIK</h5></a> 
+        <a href="{{ route('addKlinik') }}"><div class=" bg-primary px-2 rounded-1">Tambah Klinik</div></a> 
       </div>
       <!-- <span>silahkan isi form ini sesuai data yang anda miliki</span> -->
       <table class="table">

@@ -8,6 +8,8 @@ use App\Http\Controllers\SilayaController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\ManageMedisController;
 use App\Http\Controllers\ManageKlinikController;
+use App\Http\Controllers\ManageBeritaController;
+use App\Http\Controllers\PendaftaranImunisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth:web,medis']], function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/cekdatapendaftaran', [DashboardController::class, 'cekdatapendaftaran'])->name('cekdatapendaftaran');
     Route::get('/getprofil', [AuthController::class, 'getprofil'])->name('getprofil');
 
     
@@ -42,10 +45,18 @@ Route::group(['middleware' => ['auth:web,medis']], function () {
 
 
     Route::get('/jadwalImunisasi', [SisanduController::class, 'jadwalImunisasi'])->name('jadwalImunisasi');
+
     
     Route::get('/daftarSilaya', [SilayaController::class, 'daftarSilaya'])->name('daftarSilaya');
     
     Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
+
+        Route::get('/getberita', [ManageBeritaController::class, 'getberita'])->name('getBerita');
+        Route::get('/addberita', [ManageBeritaController::class, 'addberita'])->name('addBerita');
+        Route::post('/addberitaproccess', [ManageBeritaController::class, 'addberitaproccess'])->name('addBeritaProccess');
+        Route::delete('/deleteberita/{id}', [ManageBeritaController::class, 'deleteberita'])->name('deleteBerita');
+
+
         Route::get('/getuser', [ManageUserController::class, 'getuser'])->name('getUser');
 
         Route::get('/getmedis', [ManageMedisController::class, 'getmedis'])->name('getMedis');
@@ -53,6 +64,14 @@ Route::group(['middleware' => ['auth:web,medis']], function () {
         Route::post('/addmedisproccess', [ManageMedisController::class, 'addmedisproccess'])->name('addMedisProccess');
 
         Route::get('/getklinik', [ManageKlinikController::class, 'getklinik'])->name('getKlinik');
+        Route::get('/addklinik', [ManageKlinikController::class, 'addklinik'])->name('addKlinik');
+        Route::post('/addKlinikproccess', [ManageKlinikController::class, 'addKlinikproccess'])->name('addKlinikProccess');
+        
+    });
+    Route::group(['middleware' => ['auth', 'ceklevel:doctor']], function() {
+        Route::get('/getpendaftaranimunisasi', [PendaftaranImunisasiController::class, 'getpendaftaranimunisasi'])->name('getPendaftaranImunisasi');
 
+        Route::get('/addjadwalImunisasi', [SisanduController::class, 'addjadwalImunisasi'])->name('addJadwalImunisasi');
+        Route::post('/addjadwalImunisasiproccess', [SisanduController::class, 'addjadwalImunisasiproccess'])->name('addJadwalImunisasiProccess');
     });
 });

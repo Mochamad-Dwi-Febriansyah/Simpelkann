@@ -67,15 +67,15 @@ class AuthController extends Controller
         $data = [
             'username' => $request->username,
             'password' => $request->password,
-            // 'tanggal_lahir' => $request->tanggal_lahir,
-            // 'alamat' => $request->alamat,
-            // 'regional_id' => $request->region_id,
-            // 'kode_akses' => $kodeakses
-            'role_id' => 'admin'
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'regional_id' => $request->region_id,
+            'kode_akses' => $kodeakses
+            // 'role_id' => 'admin'
         ]; 
         $data['password'] = Hash::make($request->password);
-        Medis::create($data);
-        // User::create($data);
+        // Medis::create($data);
+        User::create($data);
         return redirect()->route('login')->with('register_success', 'Anda Telah Berhasil Registrasi, Silahkan Login');
     }
     public function logout(Request $request){
@@ -86,7 +86,7 @@ class AuthController extends Controller
     }
 
     public function getprofil(){
-        $dataAnak = Child_User::where('id', auth()->user()->id)->get();
+        $dataAnak = Child_User::where('user_id', auth()->user()->id)->get();
         return view('auth.profil',['dataAnak'=>$dataAnak]);
     }
 }

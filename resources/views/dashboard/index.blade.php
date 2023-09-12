@@ -18,12 +18,12 @@
         <h5 class="fw-500 mb-3">PELAYANAN SIMPELKAN</h5>
         <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
           <div class="col">
-            <div class="card">
+            <div class="card p-3">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/ikon_yandu.png') }}" 
                 class="card-img-top"
-                alt="..."
-              />
+                alt="..." style="width: 134px;height: 137px"
+              /> {{-- 128px --}}
               <div class="card-body">
                 <div class="d-grid">
                   <!-- <button class="btn back-biru-pastel" type="button">
@@ -64,11 +64,11 @@
              
           </div>
           <div class="col">
-            <div class="card">
+            <div class="card  p-3">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/ikon_cekkes.png') }}"
                 class="card-img-top"
-                alt="..."
+                alt="..." style="width: 134px;height: 137px"
               />
               <div class="card-body">
                 <div class="d-grid">
@@ -106,11 +106,11 @@
             </div>
           </div>
           <div class="col">
-            <div class="card">
+            <div class="card  p-3">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/ikon_konsultasi.png') }}"
                 class="card-img-top"
-                alt="..."
+                alt="..." style="width: 134px;height: 137px"
               />
               <div class="card-body">
                 <div class="d-grid">
@@ -134,7 +134,7 @@
           <div class="col width-card-120px">
             <div class="card h-100 border-0 bg-transparent">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/ikon_cardok.png') }}"
                 class="card-img-top"
                 alt="..."
               />
@@ -150,7 +150,7 @@
           <div class="col width-card-120px">
             <div class="card h-100 border-0 bg-transparent">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/healthcare.png') }}"
                 class="card-img-top"
                 alt="..."
               />
@@ -166,7 +166,7 @@
           <div class="col width-card-120px">
             <div class="card h-100 border-0 bg-transparent">
               <img
-                src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG"
+                src="{{ asset('assets/img/hospital.png') }}"
                 class="card-img-top"
                 alt="..."
               />
@@ -192,71 +192,19 @@
           <a href="" class="text-decoration-none">Lihat Semua</a>
         </div>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 scroll-samping">
+
+@foreach($berita as $list)
           <div class="col">
             <div class="card h-100">
-              <img src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG" class="card-img-top" alt="..." />
+              <img src="/image/{{ $list->gambar_berita }}" class="card-img-top" alt="..." />
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
+                <h5 class="card-title">{{ $list->judul_berita }}</h5>
+                <p class="card-text">{{ $list->isi_berita }}</p>
               </div>
             </div>
           </div> 
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div> 
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div> 
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div> 
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/img/—Gambarpng—illustration of cute owl in_49111.PNG" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div> 
+@endforeach
+
         </div>
       </div>
     </section>

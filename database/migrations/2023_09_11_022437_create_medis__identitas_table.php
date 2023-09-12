@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('klinik_id')->references('id')->on('kliniks')->onDelete('cascade');
             $table->bigInteger('medis_id')->unsigned()->index()->nullable();
             $table->foreign('medis_id')->references('id')->on('medis')->onDelete('cascade');
-            $table->string('nama_klinik'); 
+            $table->string('name'); 
             // $table->timestamps();
         });
     }

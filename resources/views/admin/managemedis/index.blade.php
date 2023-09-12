@@ -15,7 +15,10 @@
           <tr>
             <th scope="col">No</th>
             <th scope="col">Username</th>
-            <th scope="col">Password</th> 
+            <th scope="col">Name</th> 
+            <th scope="col">Klinik</th> 
+            <th scope="col">Alamat Klinik</th> 
+            <th scope="col">Role</th> 
           </tr>
         </thead>
         <tbody>
@@ -23,8 +26,11 @@
             @foreach ($medis as $list)
           <tr>
             <th>{{ $no++ }}</th>
-            <td>{{ $list->username }}</td>
-            <td>{{ $list->password }}</td> 
+            <td>{{ $list->medis->username }}</td>
+            <td>{{ $list->name }}</td> 
+            <td>{{ $list->klinik->nama_klinik }}</td> 
+            <td>{{ $list->klinik->alamat }}</td> 
+            <td>{{ $list->medis->role }}</td> 
           </tr>
           @endforeach
         </tbody>

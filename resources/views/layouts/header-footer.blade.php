@@ -38,6 +38,7 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="{{ route('dashboard') }}">Beranda</a>
             </li> 
+@if (!auth()->user()->role)
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Daftar Cepat
@@ -48,18 +49,27 @@
               </ul>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" href="datapendaftaran.html">Cek Data Pendaftaran</a>
+              <a class="nav-link" href="{{ route('cekdatapendaftaran') }}">Cek Data Pendaftaran</a>
             </li> 
+@endif
             {{-- <li class="nav-item">
               <a class="nav-link" href="datapendaftaran.html">Daftar Klinik</a> <!--(kabupaten demak)-->
             </li> --}}
-            @if (auth()->user()->username == 'admin')
+            @if (auth()->user()->role == 'admin')
             <li class="nav-item">
               <a class="nav-link" href="{{ route('getUser') }}">Kelola User</a>
             </li> 
             <li class="nav-item">
               <a class="nav-link" href="{{ route('getKlinik') }}">Kelola Klinik</a>
             </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('getBerita') }}">Kelola Berita</a>
+            </li> 
+            @endif
+            @if (auth()->user()->role == 'doctor')
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('getPendaftaranImunisasi') }}">Data Pendaftaran</a>
+            </li>  
             @endif
           </ul>
           <div class="d-flex gap-3">

@@ -24,14 +24,19 @@ class SisanduController extends Controller
             'klinik_id' => 'required', 
             'tanggal' => 'required',
         ]); 
-    if ($validator->fails()) {
+        if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $cekuserid = Child_User::where('kode_akses', $request->kode_akses)->first();
+    }
+    $datenow = Carbon::now()->format('Y-m-d');
+    $cekuserid = Child_User::where('kode_akses_anak', $request->kode_akses)->first();
+    if(!$cekuserid) return redirect()->back()->with('daftar_failed', 'Data Anak Tidak Ada');
+    $cekantrian = Imunisasies::where('klinik_id', $request->klinik_id)->where('tanggal', $datenow)->count();
         $data = [
             'child_users_id' => $cekuserid->id,
+            'user_id' => $cekuserid->user_id,
             'klinik_id' => $request->klinik_id,
             'tanggal' => $request->tanggal,
+            'antrian_ke' => $cekantrian +1
         ];
         Imunisasies::create($data);
         return redirect()->route('dashboard')->with('daftar_success', 'Anda Telah Berhasil daftar Imunisasi Anak, Silahkan Daftar');
@@ -40,6 +45,24 @@ class SisanduController extends Controller
     public function jadwalImunisasi(){
         $jadwal_imunisasi = JadwalImunisasies::get();
         return view('dashboard.sisandu.jadwalImunisasi', ['jadwal_imunisasi'=>$jadwal_imunisasi]);
+    }
+    public function addjadwalImunisasi(){
+        return view('doctor.jadwalImunisasi.add');
+    }
+    public function addjadwalImunisasiProccess(Request $request){
+        $validator = Validator::make($request->all(), [
+            'bulan' => 'required',
+            'nama_imunisasi' => 'required',  
+        ]); 
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $data = [
+            'bulan' => $request->bulan,
+            'nama_imunisasi' => $request->nama_imunisasi 
+        ];
+        JadwalImunisasies::create($data);
+        return redirect()->route('jadwalImunisasi')->with('add_jadwal_success', 'Anda Telah Berhasil Menambah jadwal Imunisasi');
     }
     
     public function daftarAnak(){
@@ -65,9 +88,9 @@ class SisanduController extends Controller
             'user_id' => $cekuserid->id,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tanggal_lahir' => $request->tanggal_lahir,
-            'kode_akses' => $kodeakses
+            'kode_akses_anak' => $kodeakses
         ];
         Child_User::create($data);
-        return redirect()->route('daftarSisandu')->with('register_success', 'Anda Telah Berhasil registrasi Anak, Silahkan Daftar');
+        return redirect()->route('daftarSisandu')->with('register_success', 'Anda Telah Berhasil registrasi Anak, Kode Akses Anak dapat di menu profil');
     }
 }

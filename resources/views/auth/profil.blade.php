@@ -30,16 +30,22 @@
                   </tr>
                   <tr>
                     <td class="fw-bold">Kecamatan</td>
-                    <td>{{ auth()->user()->regional->kecamatan }}</td>
+                    <td>
+                      @if(auth()->user()->regional)
+                      {{ auth()->user()->regional->kecamatan }}
+                      @endif 
+                    </td>
                   </tr>
                   <tr>
                     <td class="fw-bold">Kabupaten</td>
-                    <td>{{ auth()->user()->regional->kabupaten }}</td>
+                    <td>@if(auth()->user()->regional)
+                      {{ auth()->user()->regional->kabupaten }}
+                      @endif </td>
                   </tr>
                 </tbody>
               </table>
         </div>
-
+@if(!auth()->user()->role)
         <div class="card-body"> 
             <table class="table">
               <thead>
@@ -55,7 +61,7 @@
                   @foreach($dataAnak as $list)
                   <tr>
                     <td>{{ $i++ }}</td>
-                    <td>{{ $list->kode_akses }}</td>
+                    <td>{{ $list->kode_akses_anak }}</td>
                     <td>{{ $list->nama }}</td>
                     <td>{{ $list->tanggal_lahir }}</td>
                   </tr>
@@ -63,7 +69,7 @@
                 </tbody>
               </table>
         </div>
-
+@endif
       </div>
     </div>
 </section>

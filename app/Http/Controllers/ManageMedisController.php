@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class ManageMedisController extends Controller
 {
     public function getmedis(){
-        $data = Medis::get(); 
+        $data = Medis_Identitas::with('klinik')->with('medis')->get(); 
         // $data = Medis::with('regional')->get(); 
         return view('admin.managemedis.index', ['medis' => $data]);
     }
@@ -42,7 +42,7 @@ class ManageMedisController extends Controller
         $datamedisidentitas = [
             'klinik_id' => $request->klinik_id,
             'medis_id' => $getdatamedis->id,
-            'nama_klinik' =>$request->nama_klinik
+            'name' =>$request->nama
         ];
         Medis_Identitas::create($datamedisidentitas);
         return redirect()->route('getMedis')->with('add_data_success', 'Anda Telah Berhasil menambah data medis');

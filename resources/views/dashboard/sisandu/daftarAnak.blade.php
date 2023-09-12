@@ -22,6 +22,7 @@
             </div>
             <div class="col-md-6">
               <label for="inputAddress" class="form-label">Kode Akses Ibu</label>
+              <span class="text-danger">* klik pada profil nama</span>
               <input type="text" name="kode_akses" class="form-control" id="inputAddress" />
             </div>
             <div class="col-md-6">
